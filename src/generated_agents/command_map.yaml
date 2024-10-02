@@ -1,0 +1,5 @@
+commands:
+  - command: "process_data"
+    agent: "Agent1"
+  - command: "analyze_results"
+    agent: "Agent2"

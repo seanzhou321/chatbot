@@ -1,0 +1,11 @@
+langgraph
+langgraph-sdk
+langgraph-checkpoint-sqlite
+langsmith
+langchain-community
+langchain-core
+langchain-openai
+tavily-python
+pyyaml
+jinja2
+jupyterlab

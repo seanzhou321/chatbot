@@ -1,0 +1,9 @@
+graph = Graph()
+
+# Add nodes and edges based on the agent's logic
+graph.add_node("start", {{ agent_name }}.start)
+graph.add_node("process", {{ agent_name }}.process)
+graph.add_node("end", {{ agent_name }}.end)
+
+graph.add_edge("start", "process")
+graph.add_edge("process", "end")

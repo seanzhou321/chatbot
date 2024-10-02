@@ -1,0 +1,4 @@
+name: Agent1
+state_variables:
+  variable1: "default_value1"
+  variable2: 0

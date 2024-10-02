@@ -1,0 +1,15 @@
+from langgraph.graph import Graph
+from langgraph.prebuilt import ToolAgent
+
+class {{ agent_name }}(ToolAgent):
+    def __init__(self):
+        super().__init__()
+        self.state = {
+            {% for key, value in state_variables.items() %}
+            "{{ key }}": {{ value }},
+            {% endfor %}
+        }
+
+    def run(self, input_data):
+        # Agent logic goes here
+        pass
