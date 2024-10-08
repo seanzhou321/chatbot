@@ -1,10 +1,12 @@
+ollama
+chromadb
 langgraph
 langgraph-sdk
 langgraph-checkpoint-sqlite
 langsmith
 langchain-community
 langchain-core
-langchain-openai
+langchain-ollama
 tavily-python
 pyyaml
 jinja2
