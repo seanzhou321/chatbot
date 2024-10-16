@@ -10,4 +10,5 @@ langchain-ollama
 tavily-python
 pyyaml
 jinja2
-jupyterlab
+pydantic
+pydantic[email]
