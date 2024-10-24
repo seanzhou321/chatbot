@@ -73,39 +73,42 @@ def router(state: FlowState):
     else:
         return "process_payment"
 
-# Create our graph
-workflow = StateGraph(FlowState)
+def create_flow_agent(flowStateCls: FlowState):
+    # Create our graph
+    workflow = StateGraph(FlowState)
 
-# Add nodes
-workflow.add_node("collect_info", collect_info)
-workflow.add_node("validate_info", validate_info)
-workflow.add_node("process_payment", process_payment)
+    # Add nodes
+    workflow.add_node("collect_info", collect_info)
+    workflow.add_node("validate_info", validate_info)
+    workflow.add_node("process_payment", process_payment)
 
-# Add edges
-workflow.add_edge("collect_info", "validate_info")
-workflow.add_edge("validate_info", router)
-workflow.add_edge("process_payment", END)
+    # Add edges
+    workflow.add_edge("collect_info", "validate_info")
+    workflow.add_conditional_edges("validate_info", router)
+    workflow.add_edge("process_payment", END)
 
-# Set entry point
-workflow.set_entry_point("collect_info")
+    # Set entry point
+    workflow.set_entry_point("collect_info")
 
-# Compile the graph
-app = workflow.compile()
+    # Compile the graph
+    app = workflow.compile()
+    return app
 
-# Example usage
-initial_state = {
-    "messages": [],
-    "payee": "",
-    "amount": 0,
-    "confirmed": False
-}
+if __name__ == "__main__":
+    # Example usage
+    initial_state = {
+        "messages": [],
+        "payee": "",
+        "amount": 0,
+        "confirmed": False
+    }
 
-for output in app.stream(initial_state):
-    if '__end__' not in output:
-        response = output['messages'][-1].content
-        print(f"Chatbot: {response}")
-        user_input = input("User: ")
-        output['messages'].append(HumanMessage(content=user_input))
-    else:
-        print("Transaction completed.")
-        break
+    for output in create_flow_agent(FlowState).stream(initial_state):
+        if '__end__' not in output:
+            response = output['messages'][-1].content
+            print(f"Chatbot: {response}")
+            user_input = input("User: ")
+            output['messages'].append(HumanMessage(content=user_input))
+        else:
+            print("Transaction completed.")
+            break

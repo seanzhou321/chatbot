@@ -8,7 +8,13 @@ langchain-community
 langchain-core
 langchain-ollama
 tavily-python
+python-dotenv
 pyyaml
 jinja2
 pydantic
 pydantic[email]
+pandas
+setuptools
+importlib
+pathlib
+pytest
