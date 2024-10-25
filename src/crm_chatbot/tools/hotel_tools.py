@@ -4,10 +4,9 @@ from typing import Optional, Union
 
 from langchain_core.tools import tool
 
-from crm_chatbot.resource_loader import ResourceLoader
-PACKAGE_RESOURCE_ROOT = "crm_chatbot.resources"
+from crm_chatbot.resource_loader import ResourceLoader, RESOURCE_ROOT
 travel_db_file = "travel2.sqlite"
-travel_db_file_path = ResourceLoader().get_resource_path(PACKAGE_RESOURCE_ROOT, travel_db_file)
+travel_db_file_path = ResourceLoader().get_resource_path(RESOURCE_ROOT, travel_db_file)
 
 @tool
 def search_hotels(
