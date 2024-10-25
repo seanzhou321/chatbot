@@ -4,7 +4,7 @@ import sqlite3
 import pandas as pd
 
 # Convert the flights to present time for our tutorial
-def update_travel_dates(file, backup_file):
+def update_travel_dates(file: str, backup_file: str):
     shutil.copy(backup_file, file)
     conn = sqlite3.connect(file)
     cursor = conn.cursor()
