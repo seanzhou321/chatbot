@@ -30,7 +30,7 @@ class ResourceLoader:
         """
         try:
             # Modern approach (Python 3.9+)
-            with resources.files(package).joinpath(resource_name).open('r') as f:
+            with resources.files(package).joinpath(resource_name).open('r', encoding="utf-8") as f:
                 return f.read()
         except Exception as e:
             print(f"Error reading resource file: {e}")

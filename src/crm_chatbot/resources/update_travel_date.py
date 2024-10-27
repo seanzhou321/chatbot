@@ -3,6 +3,8 @@ import sqlite3
 
 import pandas as pd
 
+from crm_chatbot.resource_loader import ResourceLoader
+
 # Convert the flights to present time for our tutorial
 def update_travel_dates(file: str, backup_file: str):
     shutil.copy(backup_file, file)
@@ -46,3 +48,10 @@ def update_travel_dates(file: str, backup_file: str):
     conn.close()
 
     return file
+
+if __name__ == "__main__":
+    db = update_travel_dates(
+        ResourceLoader.get_resource_path("travel2.sqlite"), 
+        ResourceLoader.get_resource_path("travel2.backup.sqlite")
+    )
+    print(f"{db} has been flushed with new datetime.")
