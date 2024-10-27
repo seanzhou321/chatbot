@@ -3,9 +3,8 @@ from typing import Optional
 
 from langchain_core.tools import tool
 
-from crm_chatbot.resource_loader import ResourceLoader, RESOURCE_ROOT
-travel_db_file = "travel2.sqlite"
-travel_db_file_path = ResourceLoader().get_resource_path(RESOURCE_ROOT, travel_db_file)
+from crm_chatbot.resource_loader import ResourceLoader
+travel_db_file_path = ResourceLoader().get_resource_path("travel2.sqlite")
 
 @tool
 def search_trip_recommendations(
