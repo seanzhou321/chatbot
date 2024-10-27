@@ -3,7 +3,7 @@ from datetime import date, datetime
 from typing import Optional, Union
 from langchain_core.tools import tool
 
-from crm_chatbot.resource_loader import ResourceLoader, RESOURCE_ROOT
+from crm_chatbot.resource_loader import ResourceLoader
 travel_db_file_path = ResourceLoader().get_resource_path("travel2.sqlite")
 
 @tool
