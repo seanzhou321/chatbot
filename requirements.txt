@@ -7,6 +7,7 @@ langsmith
 langchain-community
 langchain-core
 langchain-ollama
+langchain-anthropic
 tavily-python
 python-dotenv
 pyyaml
