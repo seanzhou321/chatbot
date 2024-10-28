@@ -5,15 +5,17 @@ from langchain_ollama import ChatOllama
 from langchain.prompts import ChatPromptTemplate
 import re
 
+from crm_chatbot.tools.llm_choice import instantiate_chatllm
+
+# Initialize LLM. the choices are qwen2.5:14b (9GB), gemma2 (5.4GB), llama3.2 (2GB), and phi3.5 (2.2GB). 
+llm = instantiate_chatllm(model="phi3.5", tempreture=0)
+
 # Define our state
 class FlowState(TypedDict):
     messages: Annotated[List[HumanMessage | AIMessage], list.append]
     payee: str
     amount: float
     confirmed: bool
-
-# Initialize our LLM
-llm = ChatOllama(model="phi3.5", tempreture=0)
 
 # Define our nodes
 def collect_info(state: FlowState) -> FlowState:
