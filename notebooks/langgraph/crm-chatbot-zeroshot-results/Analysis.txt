@@ -1,0 +1,5 @@
+All the results are having issues. 
+1. llama3.2 generated extra parameter of local_db when search trip_recommendation, therefore, it failed
+2. all models has pydantic errors when parsing the results.
+3. the policy search seems to have problem because the results are different for all the tests in comparison to the tutorial result. 
+4. claudde-3.5-sonnet is more similar to 3-haiku than 3-sonnet from the tutorial. Both failed to recognize the first customer request should not respond with a tool call. 
