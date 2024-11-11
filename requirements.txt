@@ -1,5 +1,6 @@
 ollama
 chromadb
+gradio
 langgraph
 langgraph-sdk
 langgraph-checkpoint-sqlite
